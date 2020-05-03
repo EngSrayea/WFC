@@ -14,11 +14,8 @@ struct CityModifier: ViewModifier {
         content
             .foregroundColor(.white)
             .font(.system(size: 30, weight: .bold, design: .default))
-            .padding()
-            //.padding(.leading)
+            //.padding()
             .multilineTextAlignment(.center)
-            .scaledToFit()
-            
         
     }
 }
@@ -28,7 +25,7 @@ struct WSModifier: ViewModifier {
         content
         .foregroundColor(.white)
         .opacity(0.7)
-        .padding()
+        //.padding()
         .multilineTextAlignment(.center)
         .scaledToFit()
     }
@@ -41,17 +38,18 @@ struct DegreeModifier: ViewModifier {
             .font(.system(size: 75, weight: .thin, design: .default))
             .padding()
             .multilineTextAlignment(.center)
-            .scaledToFit()
-            
-        
     }
 }
 
-struct DefModifier: ViewModifier{func body(content: Content) -> some View {
-    content
-    .foregroundColor(.white)
-    .font(.system(size: 15, weight: .bold, design: .default))
-    }}
+struct DefModifier: ViewModifier
+{
+    func body(content: Content) -> some View {
+        content
+            .foregroundColor(.white)
+            .font(.system(size: 15, weight: .bold, design: .default))
+    }
+    
+}
 
 
 struct ContentView: View {
@@ -67,37 +65,44 @@ struct ContentView: View {
     var body: some View {
         ZStack{
             Image("Night").resizable().edgesIgnoringSafeArea(.all)
-            
-            VStack/*(spacing: -30)*/{
-                Text(City).modifier(CityModifier())
-                    .offset(x: 0,y: -200)
-                Text(WeatherState).modifier(WSModifier())
-                .offset(x: 0,y: -230)
-                Text(Degree).modifier(DegreeModifier()).offset(x: 0,y: -250)
+            VStack{
+                Spacer()
                 
+                VStack{ Text(City)
+                    .modifier(CityModifier())
+                    //.offset(x: 0,y: -200)
+                Text(WeatherState)
+                    .modifier(WSModifier())
+                    //.offset(x: 0,y: -230)
+                Text(Degree)
+                    .modifier(DegreeModifier())
+                }
+                
+                Spacer()
+                
+                VStack{
                 HStack{
-                    Text("Teusday").modifier(DefModifier())
-                    Spacer()
+                    Text("Tuesday").modifier(DefModifier()).padding(.leading)
                     Text("TODAY").foregroundColor(.white)
-                    .font(.system(size: 15, weight: .regular, design: .default))
+                    .font(.system(size: 12, weight: .bold, design: .default))
                     Spacer()
                     Text(MainMaxDeg)
                         .foregroundColor(.white)
-                    Spacer()
+                        .padding(.trailing, 14)
                     Text(MainMinDeg)
                         .foregroundColor(.white)
-
+                    .padding()
                 }
-                
+
                 HStack(spacing:25){
                     Text("Now").modifier(DefModifier())
-                    Text( "5AM").modifier(DefModifier())
+                    Text("5AM").modifier(DefModifier())
                     Text("6AM")
                         .modifier(DefModifier())
-                    Text( "7AM").modifier(DefModifier())
+                    Text("7AM").modifier(DefModifier())
                     Text("8AM")
                         .modifier(DefModifier())
-                    Text( "9AM").modifier(DefModifier())
+                    Text("9AM").modifier(DefModifier())
                     Text("10AM")
                         .modifier(DefModifier())
                 }
@@ -111,6 +116,7 @@ struct ContentView: View {
                     Image(systemName: "moon.stars.fill").foregroundColor(.white)
                     Image(systemName: "moon.stars.fill").foregroundColor(.white)
                 }
+                
                 HStack(spacing:32){
                     Text(Degree).modifier(DefModifier())
                     Text(Degree).modifier(DefModifier())
@@ -120,18 +126,19 @@ struct ContentView: View {
                     Text(Degree).modifier(DefModifier())
                     Text(Degree).modifier(DefModifier())
                 }
+                }
                 
-                WedWeth()
-                WedWeth()
-                WedWeth()
-                WedWeth()
-                WedWeth()
-                
-                
-                
+                VStack (spacing:5){
+                    WedWeth()
+                    WedWeth()
+                    WedWeth()
+                    WedWeth()
+                    WedWeth()
+                    WedWeth()
+                }
+                Spacer()
             }
-            
-            
+  
         }
     }
 }
@@ -142,16 +149,20 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-struct WedWeth: View {
-    var body: some View {
+struct WedWeth: View
+{
+    var body: some View
+    {
         HStack{
             Text("Wednesday").multilineTextAlignment(.leading).modifier(DefModifier())
+            Spacer()
             Image(systemName: "cloud.sun.rain.fill").foregroundColor(.white)
+            Spacer()
             Text("29").modifier(DefModifier())
             Text("24").modifier(DefModifier())
             /*Text(MaxDeg).modifier(DefModifier())
             Text(MinDeg).modifier(DefModifier())*/
-            
-        }
+        }.padding()
+        
     }
 }
