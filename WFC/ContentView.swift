@@ -58,8 +58,11 @@ struct ContentView: View {
     @State var City = "Mishrif"
     @State var WeatherState = "Mostly Clear"
     @State var Degree = "22°"
-    @State var MaxDeg = "31"
+    @State var MainMaxDeg = "31"
+    @State var MainMinDeg = "24"
+    @State var MaxDeg = "29"
     @State var MinDeg = "24"
+    
     
     var body: some View {
         ZStack{
@@ -78,10 +81,10 @@ struct ContentView: View {
                     Text("TODAY").foregroundColor(.white)
                     .font(.system(size: 15, weight: .regular, design: .default))
                     Spacer()
-                    Text(MaxDeg)
+                    Text(MainMaxDeg)
                         .foregroundColor(.white)
                     Spacer()
-                    Text(MinDeg)
+                    Text(MainMinDeg)
                         .foregroundColor(.white)
 
                 }
@@ -91,7 +94,7 @@ struct ContentView: View {
                     Text( "5AM").modifier(DefModifier())
                     Text("6AM")
                         .modifier(DefModifier())
-                    Text( "6AM").modifier(DefModifier())
+                    Text( "7AM").modifier(DefModifier())
                     Text("8AM")
                         .modifier(DefModifier())
                     Text( "9AM").modifier(DefModifier())
@@ -99,18 +102,30 @@ struct ContentView: View {
                         .modifier(DefModifier())
                 }
                 
-                HStack(spacing:25){
-                    Text("Now").modifier(DefModifier())
-                    Text( "5AM").modifier(DefModifier())
-                    Text("6AM")
-                        .modifier(DefModifier())
-                    Text( "6AM").modifier(DefModifier())
-                    Text("8AM")
-                        .modifier(DefModifier())
-                    Text( "9AM").modifier(DefModifier())
-                    Text("10AM")
-                        .modifier(DefModifier())
+                HStack(spacing:40){
+                    Image(systemName: "moon.stars.fill").foregroundColor(.white)
+                    Image(systemName: "moon.stars.fill").foregroundColor(.white)
+                    Image(systemName: "sunrise.fill").foregroundColor(.white)
+                    Image(systemName: "cloud.sun.bolt.fill").foregroundColor(.white)
+                    Image(systemName: "moon.stars.fill").foregroundColor(.white)
+                    Image(systemName: "moon.stars.fill").foregroundColor(.white)
+                    Image(systemName: "moon.stars.fill").foregroundColor(.white)
                 }
+                HStack(spacing:32){
+                    Text(Degree).modifier(DefModifier())
+                    Text(Degree).modifier(DefModifier())
+                    Text(Degree).modifier(DefModifier())
+                    Text(Degree).modifier(DefModifier())
+                    Text(Degree).modifier(DefModifier())
+                    Text(Degree).modifier(DefModifier())
+                    Text(Degree).modifier(DefModifier())
+                }
+                
+                WedWeth()
+                WedWeth()
+                WedWeth()
+                WedWeth()
+                WedWeth()
                 
                 
             }
@@ -123,5 +138,19 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+struct WedWeth: View {
+    var body: some View {
+        HStack{
+            Text("Wednesday").multilineTextAlignment(.leading).modifier(DefModifier())
+            Image(systemName: "cloud.sun.rain.fill").foregroundColor(.white)
+            Text("29").modifier(DefModifier())
+            Text("24").modifier(DefModifier())
+            /*Text(MaxDeg).modifier(DefModifier())
+            Text(MinDeg).modifier(DefModifier())*/
+            
+        }
     }
 }
